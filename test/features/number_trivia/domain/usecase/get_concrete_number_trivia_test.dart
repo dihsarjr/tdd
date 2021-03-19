@@ -24,7 +24,11 @@ void main() {
     );
 
     //act
+    final result = await useCase.execute(number: testNumber);
 
     //assert
+    expect(result, Right(testNumberTrivia));
+    verify(mockNumberTriviaRepository.getConcreteNumberTrivia(testNumber));
+    verifyNoMoreInteractions(mockNumberTriviaRepository);
   });
 }
